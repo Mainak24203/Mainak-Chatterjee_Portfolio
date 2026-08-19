@@ -27,47 +27,36 @@ heroArt.addEventListener('pointermove', (event) => {
   const x = (event.clientX - rect.left) / rect.width - 0.5;
   const y = (event.clientY - rect.top) / rect.height - 0.5;
   if (card) {
-      card.style.transform =
-        `translate3d(${x * 12}px, ${y * 10}px, 0)
+    card.style.transform =
+      `translate3d(${x * 12}px, ${y * 10}px, 0)
          rotateX(${y * -3}deg)
          rotateY(${x * 5}deg)`;
-    }
-
-    tags.forEach((tag, index) => {
-      const depth = (index + 1) * 7;
-
-      tag.style.transform =
-        `translate3d(${x * depth}px, ${y * depth}px, 0)`;
-    });
-
-    if (core) {
-      core.style.transform =
-        `translate3d(${x * 18}px, ${y * 18}px, 70px)
+  }
+tags.forEach((tag, index) => {
+  const depth = (index + 1) * 7;
+  tag.style.transform =
+    `translate3d(${x * depth}px, ${y * depth}px, 0)`;
+});
+  if (core) {
+    core.style.transform =
+      `translate3d(${x * 18}px, ${y * 18}px, 70px)
          rotateX(${y * -14}deg)
-         rotateY(${x * 18}deg)`;
-    }
-
-    rings.forEach((ring, index) => {
-      const move = (index + 1) * 4;
-
-      ring.style.marginLeft = `${x * move}px`;
-      ring.style.marginTop = `${y * move}px`;
-    });
+         rotateY(${x * 18}deg)`:;
+  }
+  rings.forEach((ring, index) => {
+    const move = (index + 1) * 4;
+    ring.style.marginLeft = `${x * move}px`;
+    ring.style.marginTop = `${y * move}px`;
   });
-
-  heroArt.addEventListener('pointerleave', () => {
-    if (card) card.style.transform = '';
-
-    tags.forEach(tag => {
-      tag.style.transform = '';
-    });
-
-    if (core) core.style.transform = '';
-
-    rings.forEach(ring => {
-      ring.style.marginLeft = '';
-      ring.style.marginTop = '';
-    });
+heroArt.addEventListener('pointerleave', () => {
+  if (card) card.style.transform = '';
+  tags.forEach(tag => {
+    tag.style.transform = '';
   });
-}
+  if (core) core.style.transform = '';
+  rings.forEach(ring => {
+    ring.style.marginLeft = '';
+    ring.style.marginTop = '';
+  });
+});
 });
